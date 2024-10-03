@@ -4,6 +4,8 @@
 
 ⚠️ **Note:** This is a work in progress.
 
+I opted not to include pagination as there are only 12 companies in the database.
+
 ## TODO
 
 - [ ] Redis or Cache
@@ -14,8 +16,12 @@
     - [ ] Pagination
     - [ ] Query: Include Prices
   - [ ] Frontend
+    - [ ] Graph Tooltip Offset
 
-## Future Scaling
+ * Ensure the price displayed is the latest price (e.g: DESC)
+
+## Scalability Considerations
 
  * Load Balancer for distributing traffic.
  * CDN.
+ * Rate Limiting with an LRU Cache. 
