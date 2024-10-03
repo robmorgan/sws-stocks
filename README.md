@@ -1,8 +1,19 @@
+![SWS App Screenshot](/_docs/sws-screenshot.png)
+
 # Simply Wall St: Stocks App
+
+⚠️ **Note:** This is a work in progress.
 
 ## TODO
 
 - [ ] Redis or Cache
+- [ ] GitHub Actions
+- [ ] Testing
+  - [ ] Backend
+    - [ ] Basic Request
+    - [ ] Pagination
+    - [ ] Query: Include Prices
+  - [ ] Frontend
 
 ## Future Scaling
 
