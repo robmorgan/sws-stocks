@@ -1,0 +1,11 @@
+# misc os files
+.DS_Store
+
+# vscode files
+.vscode
+
+# Go debugging
+.profiles
+
+# If the binary gets built during dev, don't commit it.
+# TODO - add go binaries
