@@ -1,4 +1,4 @@
-import { LineChart, Line, ResponsiveContainer, YAxis } from "recharts";
+import { LineChart, Line, ResponsiveContainer, YAxis, Tooltip } from "recharts";
 
 interface MiniChartProps {
   data: { date: string; price: number }[];
@@ -12,6 +12,7 @@ export default function MiniChart({ data }: MiniChartProps) {
     <ResponsiveContainer width="100%" height="100%">
       <LineChart data={data}>
         <YAxis domain={[minPrice, maxPrice]} hide={true} />
+        <Tooltip />
         <Line
           type="monotone"
           dataKey="price"
