@@ -23,22 +23,46 @@ export default function FilterControls({
 
   return (
     <div className="mb-4 flex flex-wrap gap-4">
-      <select onChange={handleExchangeChange} className="border rounded p-2">
+      <select
+        className="select select-bordered w-full max-w-xs"
+        onChange={handleExchangeChange}
+      >
+        <option disabled selected>
+          Select Exchange
+        </option>
         <option value="">All Exchanges</option>
+        <option value="ASX">ASX</option>
         <option value="NYSE">NYSE</option>
         <option value="NASDAQ">NASDAQ</option>
       </select>
+
       <input
         type="number"
         placeholder="Minimum Score"
+        className="input input-bordered w-full max-w-xs"
         onChange={handleScoreChange}
-        className="border rounded p-2"
       />
-      <select onChange={handleSortChange} className="border rounded p-2">
-        <option value="">Sort by</option>
+
+      <select
+        className="select select-bordered w-full max-w-xs"
+        onChange={handleSortChange}
+      >
+        <option disabled selected>
+          Sort by
+        </option>
+        <option value="">Default</option>
         <option value="score">Score</option>
         <option value="volatility">Volatility</option>
       </select>
+
+      <button
+        className="btn btn-primary"
+        onClick={() => {
+          /* Implement reset functionality */
+        }}
+      >
+        Reset Filters
+      </button>
     </div>
   );
 }
