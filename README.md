@@ -1,4 +1,4 @@
-![SWS App Screenshot](/_docs/sws-screenshot.png)
+![SWS App Screenshot](/_docs/sws.png)
 
 # Simply Wall St: Stocks App
 
