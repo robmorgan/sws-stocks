@@ -1,5 +1,5 @@
 import CompanyCard from "./CompanyCard";
-import { Company } from "../types";
+import { Company } from "../interfaces";
 
 interface CompanyListProps {
   companies: Company[];

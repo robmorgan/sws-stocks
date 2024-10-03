@@ -1,4 +1,4 @@
-import { Company } from "../types";
+import { Company } from "../interfaces";
 
 interface CompanyCardProps {
   company: Company;

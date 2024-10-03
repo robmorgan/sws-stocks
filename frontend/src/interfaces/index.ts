@@ -1,3 +1,5 @@
+// Vercel recommends using `interfaces` over a `types` dir, so do this instead.
+// https://github.com/vercel/next.js/blob/canary/examples/with-typescript/interfaces/index.ts
 export interface Company {
   id: string;
   name: string;

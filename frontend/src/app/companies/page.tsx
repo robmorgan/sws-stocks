@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import CompanyList from "../../components/CompanyList";
 import FilterControls from "../../components/FilterControls";
 import { fetchCompanies } from "../../lib/api";
-import { Company, Filters } from "../../types";
+import { Company, Filters } from "../../interfaces";
 
 export default function CompaniesPage() {
   const [companies, setCompanies] = useState<Company[]>([]);

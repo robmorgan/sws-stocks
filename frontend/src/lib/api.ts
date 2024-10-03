@@ -1,4 +1,4 @@
-import { Company, Filters } from "../types";
+import { Company, Filters } from "../interfaces";
 
 export async function fetchCompanies(
   filters: Filters,

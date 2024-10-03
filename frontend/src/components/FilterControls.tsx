@@ -1,4 +1,4 @@
-import { Filters } from "../types";
+import { Filters } from "../interfaces";
 
 interface FilterControlsProps {
   onFilterChange: (filters: Filters) => void;
@@ -25,11 +25,10 @@ export default function FilterControls({
     <div className="mb-4 flex flex-wrap gap-4">
       <select
         className="select select-bordered w-full max-w-xs"
+        defaultValue=""
         onChange={handleExchangeChange}
       >
-        <option disabled selected>
-          Select Exchange
-        </option>
+        <option disabled>Select Exchange</option>
         <option value="">All Exchanges</option>
         <option value="ASX">ASX</option>
         <option value="NYSE">NYSE</option>
@@ -45,11 +44,10 @@ export default function FilterControls({
 
       <select
         className="select select-bordered w-full max-w-xs"
+        defaultValue=""
         onChange={handleSortChange}
       >
-        <option disabled selected>
-          Sort by
-        </option>
+        <option disabled>Sort by</option>
         <option value="">Default</option>
         <option value="score">Score</option>
         <option value="volatility">Volatility</option>
