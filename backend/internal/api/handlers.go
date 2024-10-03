@@ -34,7 +34,9 @@ func (h *Handler) GetCompanies(c *gin.Context) {
 		filter["min_score"] = minScore
 	}
 
-	companies, err := h.CompanyService.GetCompanies(sort, filter)
+	includePrices := c.Query("includePrices") == "true"
+
+	companies, err := h.CompanyService.GetCompanies(sort, filter, includePrices)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

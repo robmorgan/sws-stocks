@@ -1,4 +1,5 @@
 import { Company } from "../interfaces";
+import MiniChart from "./MiniChart";
 
 interface CompanyCardProps {
   company: Company;
@@ -12,6 +13,10 @@ export default function CompanyCard({ company }: CompanyCardProps) {
         <p>Symbol: {company.unique_symbol}</p>
         <p>Last Price: ${company.last_price.toFixed(2)}</p>
         <p>Score: {company.score}</p>
+        <div className="h-16">
+          {/* Adjust height as needed */}
+          <MiniChart data={company.prices} />
+        </div>
       </div>
     </div>
   );

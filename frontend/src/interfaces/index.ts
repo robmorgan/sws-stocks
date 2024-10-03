@@ -8,6 +8,7 @@ export interface Company {
   unique_symbol: string;
   score: number;
   last_price: number;
+  prices: { date: string; price: number }[];
 }
 
 export interface Filters {

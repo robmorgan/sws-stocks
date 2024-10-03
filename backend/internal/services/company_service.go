@@ -15,7 +15,7 @@ func NewCompanyService(db *sql.DB) *CompanyService {
 	return &CompanyService{DB: db}
 }
 
-func (s *CompanyService) GetCompanies(sort string, filter map[string]string) ([]models.Company, error) {
+func (s *CompanyService) GetCompanies(sort string, filter map[string]string, includePrices bool) ([]models.Company, error) {
 	// Set up the SQL query based on the provided sort and filter parameters. Not I'm skipping an ORM here
 	// for simplicity, preferring to write the SQL queries directly.
 	query := `
@@ -70,8 +70,46 @@ func (s *CompanyService) GetCompanies(sort string, filter map[string]string) ([]
 		if err != nil {
 			return nil, fmt.Errorf("error scanning company row: %v", err)
 		}
+
+		// Gather the price history for the company
+		if includePrices {
+			prices, err := s.GetCompanyPrices(c.ID)
+			if err != nil {
+				return nil, fmt.Errorf("error getting company prices: %v", err)
+			}
+			c.Prices = prices
+		}
+
 		companies = append(companies, c)
 	}
 
 	return companies, nil
+}
+
+func (s *CompanyService) GetCompanyPrices(companyID string) ([]models.Price, error) {
+	query := `
+        SELECT date, price 
+        FROM swsCompanyPriceClose 
+        WHERE company_id = ? 
+        ORDER BY date DESC 
+        LIMIT 90
+    `
+
+	rows, err := s.DB.Query(query, companyID)
+	if err != nil {
+		return nil, fmt.Errorf("error querying company prices: %v", err)
+	}
+	defer rows.Close()
+
+	var prices []models.Price
+	for rows.Next() {
+		var p models.Price
+		err := rows.Scan(&p.Date, &p.Price)
+		if err != nil {
+			return nil, fmt.Errorf("error scanning price row: %v", err)
+		}
+		prices = append(prices, p)
+	}
+
+	return prices, nil
 }
