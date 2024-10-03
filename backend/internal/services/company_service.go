@@ -48,6 +48,7 @@ func (s *CompanyService) GetCompanies(sort string, filter map[string]string, inc
 	if sort == "score" {
 		query += " ORDER BY s.total DESC"
 	} else if sort == "volatility" {
+		// TODO - triple check this is working correctly with sqlite3.
 		query += `
 			ORDER BY (
 				SELECT MAX(price) - MIN(price)
