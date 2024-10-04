@@ -6,7 +6,7 @@ export async function fetchCompanies(
 ): Promise<Company[]> {
   const params = new URLSearchParams({
     ...filters,
-    sort, // this will send the sort param on every request, but it's fine for this demo
+    sort,
     includePrices: "true", // fetch price history (note: we could disable this for performance reasons)
   });
 

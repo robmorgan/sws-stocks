@@ -9,7 +9,7 @@ import { Company, Filters } from "../../interfaces";
 export default function CompaniesPage() {
   const [companies, setCompanies] = useState<Company[]>([]);
   const [filters, setFilters] = useState<Filters>({});
-  const [sort, setSort] = useState<string>("");
+  const [sort, setSort] = useState<string>("score");
 
   useEffect(() => {
     loadCompanies();
