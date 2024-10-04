@@ -6,10 +6,9 @@ export interface Company {
   unique_symbol: string | null;
   score: number | null;
   last_price: number | null;
-  prices: { date: string; price: number }[];
+  prices: CompanyPrice[];
 }
 
-// TODO - remove this if we use the `prices` field in the Company interface
 export interface CompanyPrice {
   date: string;
   price: number;
