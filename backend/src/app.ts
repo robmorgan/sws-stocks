@@ -31,7 +31,6 @@ app.get("/", (req: express.Request, res: express.Response) => {
   res.json({ message: "Welcome to sws-stocks API" });
 });
 app.get("/v1/companies", companyController.getCompanies);
-app.get("/v1/companies/:id", companyController.getCompany);
 
 // Error handling middleware
 app.use(
