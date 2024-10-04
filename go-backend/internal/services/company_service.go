@@ -16,7 +16,7 @@ func NewCompanyService(db *sql.DB) *CompanyService {
 }
 
 func (s *CompanyService) GetCompanies(sort string, filter map[string]string, includePrices bool) ([]models.Company, error) {
-	// Set up the SQL query based on the provided sort and filter parameters. Not I'm skipping an ORM here
+	// Set up the SQL query based on the provided sort and filter parameters. Note: I'm skipping an ORM here
 	// for simplicity, preferring to write the SQL queries directly.
 	query := `
 		SELECT c.id, c.name, c.ticker_symbol, c.exchange_symbol, c.unique_symbol, s.total as score,
