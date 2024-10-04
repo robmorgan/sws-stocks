@@ -32,7 +32,7 @@ export default function FilterControls({
         <option value="">All Exchanges</option>
         <option value="ASX">ASX</option>
         <option value="NYSE">NYSE</option>
-        <option value="NASDAQ">NASDAQ</option>
+        <option value="NasdaqGS">NASDAQ</option>
       </select>
 
       <input
@@ -44,11 +44,10 @@ export default function FilterControls({
 
       <select
         className="select select-bordered w-full max-w-xs"
-        defaultValue=""
+        defaultValue="score"
         onChange={handleSortChange}
       >
         <option disabled>Sort by</option>
-        <option value="">Default</option>
         <option value="score">Score</option>
         <option value="volatility">Volatility</option>
       </select>
