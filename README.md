@@ -25,3 +25,7 @@ I opted not to include pagination as there are only 12 companies in the database
  * Load Balancer for distributing traffic.
  * CDN.
  * Rate Limiting with an LRU Cache. 
+
+## Bugs
+
+- [ ] When you filter by exchange, its not taking the sorting into account. Maybe always pass this from the frontend instead of empty.
