@@ -1,8 +1,10 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-import { CompanyController } from "./controllers/companyController";
+import swaggerUi from "swagger-ui-express";
 import logger from "./utils/logger";
+import swaggerSpec from "./config/swagger";
+import companiesRouter from "./routes/companies";
 
 // Initialize express app
 const app = express();
@@ -23,14 +25,23 @@ app.use(
   }
 );
 
-// Initialize controllers
-const companyController = new CompanyController();
+// Serve Swagger API documentation. Note: If the data from this API is meant to be private, then we'd avoid doing this
+// in production.
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    swaggerOptions: {
+      url: "http://localhost:8080/swagger.json",
+    },
+  })
+);
 
 // Define routes
+app.use("/", companiesRouter);
 app.get("/", (req: express.Request, res: express.Response) => {
   res.json({ message: "Welcome to sws-stocks API" });
 });
-app.get("/v1/companies", companyController.getCompanies);
 
 // Error handling middleware
 app.use(
