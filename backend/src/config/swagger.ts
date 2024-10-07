@@ -13,6 +13,10 @@ const options: swaggerJsdoc.Options = {
         url: "http://localhost:8080",
         description: "Development server",
       },
+      {
+        url: "http://api.traefik.me",
+        description: "Production server",
+      },
     ],
   },
   apis: ["./src/routes/*.ts", "./src/interfaces/*.ts"],

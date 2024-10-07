@@ -32,7 +32,7 @@ app.use(
   swaggerUi.serve,
   swaggerUi.setup(swaggerSpec, {
     swaggerOptions: {
-      url: "http://localhost:8080/swagger.json",
+      url: "http://api.traefik.me/swagger.json",
     },
   })
 );
