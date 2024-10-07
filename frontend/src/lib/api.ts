@@ -11,7 +11,7 @@ export async function fetchCompanies(
   });
 
   // TODO - don't hard-code the base URL here. Where else would it live?
-  const response = await fetch(`http://localhost:8080/v1/companies?${params}`);
+  const response = await fetch(`http://api.traefik.me/v1/companies?${params}`);
   if (!response.ok) {
     throw new Error("Failed to fetch companies");
   }
