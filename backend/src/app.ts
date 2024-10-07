@@ -26,7 +26,7 @@ app.use(
 );
 
 // Serve Swagger API documentation. Note: If the data from this API is meant to be private, then we'd avoid doing this
-// in production.
+// in production and also forcibly use SSL for this endpoint.
 app.use(
   "/api-docs",
   swaggerUi.serve,

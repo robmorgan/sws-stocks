@@ -8,7 +8,7 @@ export class CompanyService {
     includePrices: boolean
   ): Company[] {
     // Set up the SQL query based on the provided sort and filter parameters. Note: I'm skipping an ORM here
-    // for simplicity, preferring to write the SQL queries directly.
+    // for simplicity, preferring to write the SQL queries directly. See the `README.md` for more details.
     let query = `
       SELECT 
         c.id, c.name, c.ticker_symbol, c.exchange_symbol, c.unique_symbol, s.total as score,
