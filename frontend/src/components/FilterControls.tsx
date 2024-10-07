@@ -1,7 +1,8 @@
+import React, { useState } from "react";
 import { Filters } from "../interfaces";
 
 interface FilterControlsProps {
-  onFilterChange: (filters: Filters) => void;
+  onFilterChange: (updater: (prevFilters: Filters) => Filters) => void;
   onSortChange: (sort: string) => void;
 }
 
@@ -9,16 +10,34 @@ export default function FilterControls({
   onFilterChange,
   onSortChange,
 }: FilterControlsProps) {
+  const [exchangeSymbol, setExchangeSymbol] = useState("");
+  const [minScore, setMinScore] = useState("");
+  const [sortBy, setSortBy] = useState("score");
+
   const handleExchangeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setExchangeSymbol(e.target.value);
     onFilterChange((prev) => ({ ...prev, exchange_symbol: e.target.value }));
   };
 
   const handleScoreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMinScore(e.target.value);
     onFilterChange((prev) => ({ ...prev, min_score: e.target.value }));
   };
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortBy(e.target.value);
     onSortChange(e.target.value);
+  };
+
+  const handleReset = () => {
+    setExchangeSymbol("");
+    setMinScore("");
+    setSortBy("score");
+    onFilterChange(() => ({
+      exchange_symbol: "",
+      min_score: "",
+    }));
+    onSortChange("score");
   };
 
   return (
@@ -52,12 +71,7 @@ export default function FilterControls({
         <option value="volatility">Volatility</option>
       </select>
 
-      <button
-        className="btn btn-primary"
-        onClick={() => {
-          /* Implement reset functionality */
-        }}
-      >
+      <button className="btn btn-primary" onClick={handleReset}>
         Reset Filters
       </button>
     </div>
